@@ -1,4 +1,4 @@
-package konfiguracja;
+package wyszukiwanie;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,16 +12,13 @@ public class Zadanie1 {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.google.com");
+        driver.get("https://hotel-testlab.coderslab.pl/en/ ");
+        WebElement element = driver.findElement(By.id("hotel_location"));
+        WebElement element2 = driver.findElement(By.id("search_room_submit"));
+        WebElement element3 = driver.findElement(By.id("newsletter-input"));
+        element.sendKeys("Warsaw");
+        element3.sendKeys("test@test.com");
 
-        WebElement agreeButton = driver.findElement(By.id("L2AGLb"));
-        agreeButton.click();
-
-        WebElement element = driver.findElement(By.name("q"));
-        element.clear();
-        element.sendKeys("Zwierzęta parzystkopytne");
-        element.submit();
-        driver.quit();
 
     }
 }
