@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import taskcheckconfig.GenerateEmail;
 
 import java.time.Duration;
 
@@ -17,9 +18,9 @@ public class Zadanie1 {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://hotel-testlab.coderslab.pl/en/login?back=my-account");
-        WebElement email = driver.findElement(By.cssSelector("input.is_required.validate.account_input.form-control"));
-        email.sendKeys("test234565434@test.com");
+        driver.get("https://hotel-testlab.coderslab.pl/my-account");
+        WebElement email = driver.findElement(By.id("email_create"));
+        email.sendKeys(GenerateEmail.withTimestamp());
         WebElement createAnAccount = driver.findElement(By.id("SubmitCreate"));
         createAnAccount.click();
 
@@ -27,17 +28,43 @@ public class Zadanie1 {
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='customer_firstname']")));
 
         WebElement firstName = driver.findElement(By.xpath("//input[@id='customer_firstname']"));
-        if(firstName.isDisplayed()) {
+        if (firstName.isDisplayed()) {
             firstName.sendKeys("Blablabla");
-            firstName.submit();
-        }else {
-            Assert.fail();
+        } else {
+//            Assert.fail();
+            System.out.println("firstName - not displayed");
         }
         WebElement lastName = driver.findElement(By.xpath("//input[@id='customer_lastname']"));
+        if (lastName.isDisplayed()) {
+            lastName.sendKeys("Balbla");
+        } else {
+//            Assert.fail();
+            System.out.println("lastName - not displayed");
+        }
         WebElement email2 = driver.findElement(By.xpath("//input[@id='email']"));
+        if (email2.isDisplayed()) {
+            System.out.println("email2 - is displayed");
+            ;
+        } else {
+//            Assert.fail();
+            System.out.println("firstName - not displayed");
+        }
         WebElement password = driver.findElement(By.xpath("//input[@id='passwd']"));
-
+        if (password.isDisplayed()) {
+            password.sendKeys("Boom123!@#");
+        } else {
+//            Assert.fail();
+            System.out.println("password - not displayed");
+        }
+        WebElement register = driver.findElement(By.id("submitAccount"));
+        if (register.isDisplayed()) {
+            register.click();
+        } else {
+//            Assert.fail();
+            System.out.println("register - not displayed");
         }
 
     }
+
+}
 

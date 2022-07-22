@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import taskcheckconfig.GenerateEmail;
 
 import java.time.Duration;
 
@@ -20,7 +21,8 @@ public class Zadanie345 {
         WebElement signIn = driver.findElement(By.cssSelector("a.user_login.navigation-link"));
         signIn.click();
         WebElement email = driver.findElement(By.cssSelector("input.is_required.validate.account_input.form-control"));
-        email.sendKeys("test234565435@test.com");
+//        email.sendKeys("test234565435@test.com");
+        email.sendKeys(GenerateEmail.withTimestamp());
         WebElement createAnAccount = driver.findElement(By.id("SubmitCreate"));
         createAnAccount.click();
 
