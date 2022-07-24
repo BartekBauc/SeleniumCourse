@@ -19,7 +19,7 @@ public class Zadanie1 {
 
         WebElement element = driver.findElement(By.name("q"));
         element.clear();
-        element.sendKeys("Zwierzęta parzystkopytne");
+        element.sendKeys("Selnium");
         element.submit();
         driver.quit();
 

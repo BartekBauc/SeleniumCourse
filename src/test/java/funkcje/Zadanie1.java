@@ -1,6 +1,9 @@
 package funkcje;
 
 import dev.failsafe.internal.util.Assert;
+import org.assertj.core.api.AssertJProxySetup;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.error.AssertJMultipleFailuresError;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,19 +38,17 @@ public class Zadanie1 {
             System.out.println("firstName - not displayed");
         }
         WebElement lastName = driver.findElement(By.xpath("//input[@id='customer_lastname']"));
-        if (lastName.isDisplayed()) {
+        Assertions.assertThat(lastName.isDisplayed()).isTrue();
             lastName.sendKeys("Balbla");
-        } else {
-//            Assert.fail();
-            System.out.println("lastName - not displayed");
-        }
+
+
         WebElement email2 = driver.findElement(By.xpath("//input[@id='email']"));
         if (email2.isDisplayed()) {
             System.out.println("email2 - is displayed");
             ;
         } else {
 //            Assert.fail();
-            System.out.println("firstName - not displayed");
+            System.out.println("email - not displayed");
         }
         WebElement password = driver.findElement(By.xpath("//input[@id='passwd']"));
         if (password.isDisplayed()) {
